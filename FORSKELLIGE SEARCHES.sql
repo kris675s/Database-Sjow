@@ -1,0 +1,6 @@
+SELECT PetBreed
+FROM PET 
+
+SELECT COUNT(PetId)
+FROM PET
+
