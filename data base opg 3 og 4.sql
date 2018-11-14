@@ -1,22 +1,20 @@
 USE [A_DB14_2018]
-DROP TABLE PET_OWNER
 CREATE TABLE PET_OWNER(
-OwnerID int NOT NULL,
-OwnerLastName Nvarchar NULL,
-OwnerFirstName Nvarchar NULL,
-OwnerPhone Nvarchar NULL,
-OwnerEmail Nvarchar NULL,
+OwnerID			int				NOT NULL IDENTITY(1,1),
+OwnerLastName	nVARCHAR (25)	NOT NULL,
+OwnerFirstName	nVARCHAR (25)	NOT NULL,
+OwnerPhone		nVARCHAR (12)	NULL,
+OwnerEmail		nVARCHAR (100)	NULL,
 CONSTRAINT Pet_Owner_PK PRIMARY KEY (OwnerID) 
 );
-DROP TABLE PET
 CREATE TABLE PET(
-PetID int NOT NULL,
-PetName Nvarchar NULL,
-PetType Nvarchar NULL,
-PetBreed Nvarchar NULL,
-PetWeight Nvarchar NULL,
-PetDob DateTime2 NULL,
-OwnerID INT NOT NULL,
+PetID			INT				NOT NULL IDENTITY(1,1),
+PetName			Nvarchar (50)	NULL,
+PetType			Nvarchar (50)	NULL,
+PetBreed		Nvarchar (50)	NULL,
+PetWeight		Nvarchar (50)	NULL,
+PetDob			DateTime2		NULL,
+OwnerID			INT				NOT NULL,
 CONSTRAINT PET_PK PRIMARY KEY (PetID),
 CONSTRAINT PET_OwnerID_FK FOREIGN KEY (OwnerID) REFERENCES PET_OWNER (OwnerID)
 );
@@ -36,7 +34,7 @@ CONSTRAINT INVOICE_PK PRIMARY KEY (InvoiceNumber)
 CREATE TABLE PRODUCT(
 ProductNumber Int NOT NULL,
 ProductType Int NOT NULL,
-ProductDescription nvarchar NULL,
+ProductDescription nvarchar (50) NULL,
 UnitPrice Float (2) not null,
 CONSTRAINT PRODUCT_PK PRIMARY KEY (ProductNumber)
 );
@@ -58,20 +56,20 @@ CONSTRAINT PRODUCT_FK FOREIGN KEY (ProductNumber)
 CREATE TABLE SEMINAR(
 SeminarId INT NOT NULL,
 SeminarDate DateTime2 NOT NULL,
-Location nvarchar NOT NULL,
-SeminarTitel Nvarchar NOT NULL,
+Location NVARCHAR (50) NOT NULL,
+SeminarTitel NVARCHAR (50) NOT NULL,
 CONSTRAINT SEMINAR_PK PRIMARY KEY (SeminarId)
 );
 CREATE TABLE ZIP_CITY(
 Zip INT NOT NULL,
-City NVARCHAR NULL
+City NVARCHAR (50) NULL
 CONSTRAINT ZIP_CITY_PK PRIMARY KEY (Zip)
 );
 CREATE TABLE CUSTOMER(
 CustomerId INT NOT NULL,
-FirstName NVARCHAR NULL,
-LastName NVARCHAR NULL,
-Street NVARCHAR NULL,
+FirstName NVARCHAR (50) NULL,
+LastName NVARCHAR (50) NULL,
+Street NVARCHAR (50) NULL,
 Zip INT NOT NULL,
 CONSTRAINT CUSTOMER_PK PRIMARY KEY (CustomerId),
 CONSTRAINT ZIP_CITY_FK FOREIGN KEY (Zip)
